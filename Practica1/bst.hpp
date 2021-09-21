@@ -8,16 +8,16 @@ using namespace std;
 */
 class Node
 {
-    int data;
+public:
+int data;
     Node *left;
     Node *right;
     Node *ancestor;
 
-public:
     //Métodos get
     int getData() { return this->data; }
-    Node *getleft() { return this->left; }
-    Node *getDer() { return this->right; }
+    Node *getLeft() { return this->left; }
+    Node *getRight() { return this->right; }
     Node *getAncestor() { return this->ancestor; }
     //Métodos set
     void setData(int data) { this->data = data; }
@@ -95,10 +95,9 @@ void Node :: imprimirPostOrder(Node *actual) {
 */
 class BST {
 
-    private:
+    public:
         Node *root;
 
-    public:
         // Métodos get
         Node *getRoot() { return this->root; }
         // Métodos set
@@ -140,9 +139,9 @@ void BST :: agregaNodoIterativo(int data) {
         while (actual) {
             ancestor = actual;
             if (data < actual->getData()) //Determina la relación de orden
-                actual = actual->getleft();
+                actual = actual->getLeft();
             else
-                actual = actual->getDer();
+                actual = actual->getRight();
         }
         if (data < ancestor->getData()) //El elemento es menor que el ancestor
             ancestor->setLeft(new Node(ancestor, data));
@@ -164,7 +163,7 @@ Node *BST :: buscarNodo(int data) {
         if (actual->getData() == data)
             return actual;
         else
-            actual = actual->getData() > data ? actual->getleft() : actual->getDer();
+            actual = actual->getData() > data ? actual->getLeft() : actual->getRight();
     }
     return nullptr;
 }
